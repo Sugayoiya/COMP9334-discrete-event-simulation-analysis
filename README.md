@@ -2,5 +2,5 @@
 
 usage：
 $python3
->>import wrapper
->>wrapper.run_series()
+/>> import wrapper
+/>> wrapper.run_series()
