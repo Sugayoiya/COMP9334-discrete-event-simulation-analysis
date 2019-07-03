@@ -1,0 +1,116 @@
+server_state1 =
+{'0':'OFF','1':'SETUP','2':'BUSY','3':'DELAYEDOFF','4':'BUSY_JOB_NOT_IN_QUEUE'}
+
+job_state = 
+{'0':'MARKED', '1':'UNMARKED'}
+
+
+event: [(10, 'arrival'), (20, 'arrival'), (32, 'arrival'), (33, 'arrival')] 
+
+-----------------------  -----------------------
+event:
+ [(20, 'arrival'), (32, 'arrival'), (33, 'arrival'), (60.0, 'setup')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['0', 0], 2: ['1', 60.0], 3: ['0', 0]}) 
+
+depatcher_queue:
+ [('1', 'MARKED')] 
+
+master_clock: 10 
+
+-----------------------  -----------------------
+event:
+ [(32, 'arrival'), (33, 'arrival'), (60.0, 'setup'), (70.0, 'setup')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['0', 0], 2: ['1', 60.0], 3: ['1', 70.0]}) 
+
+depatcher_queue:
+ [('1', 'MARKED'), ('2', 'MARKED')] 
+
+master_clock: 20 
+
+-----------------------  -----------------------
+event:
+ [(33, 'arrival'), (60.0, 'setup'), (70.0, 'setup'), (82.0, 'setup')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['1', 82.0], 2: ['1', 60.0], 3: ['1', 70.0]}) 
+
+depatcher_queue:
+ [('1', 'MARKED'), ('2', 'MARKED'), ('3', 'MARKED')] 
+
+master_clock: 32 
+
+-----------------------  -----------------------
+event:
+ [(60.0, 'setup'), (70.0, 'setup'), (82.0, 'setup')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['1', 82.0], 2: ['1', 60.0], 3: ['1', 70.0]}) 
+
+depatcher_queue:
+ [('1', 'MARKED'), ('2', 'MARKED'), ('3', 'MARKED'), ('4', 'UNMARKED')] 
+
+master_clock: 33 
+
+-----------------------  -----------------------
+event(setup):
+ [(70.0, 'setup'), (82.0, 'setup'), (61.0, 'completed')] 
+depatcher_queue:
+ [('2', 'MARKED'), ('3', 'MARKED'), ('4', 'UNMARKED')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['1', 82.0], 2: ['2', 61.0], 3: ['1', 70.0]}) 
+
+master_clock:
+ 60.0 
+
+-----------------------  -----------------------
+event(complete,marked)
+: [(70.0, 'setup'), (82.0, 'setup'), (63.0, 'completed')] 
+
+depatcher_queue:
+ [('3', 'MARKED'), ('4', 'MARKED')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['1', 82.0], 2: ['2', 63.0], 3: ['1', 70.0]}) 
+
+master_clock:
+ 61.0 
+
+-----------------------  -----------------------
+event(complete,marked)
+: [(70.0, 'setup'), (66.0, 'completed')] 
+
+depatcher_queue:
+ [('4', 'MARKED')] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['0', 0], 2: ['2', 66.0], 3: ['1', 70.0]}) 
+
+master_clock:
+ 63.0 
+
+-----------------------  -----------------------
+event(complete,marked)
+: [(70.0, 'completed')] 
+
+depatcher_queue:
+ [] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['0', 0], 2: ['2', 70.0], 3: ['0', 0]}) 
+
+master_clock:
+ 66.0 
+
+-----------------------  -----------------------
+event(complete,else):
+ [(170.0, 'delayedoff')] 
+
+depatcher_queue:
+ [] 
+server_state:
+ defaultdict(<class 'list'>, {1: ['0', 0], 2: ['3', 170.0], 3: ['0', 0]}) 
+
+master_clock:
+ 70.0 
+
+-----------------------  -----------------------
+
+finished!
+ mrt is : 41.250

@@ -1,0 +1,161 @@
+# calculate the $\omega$ ( transient removal )
+
+from collections import defaultdict
+sample = defaultdict(list)
+mrt = 0.0
+temp = 0.0
+a_c = []
+for i in range(10):
+    a_c = simulate('random',0.35,1,5,5,20,20000)
+    sample[i].append(a_c[0])
+
+length = min([len(sample[i][0]) for i in sample])
+
+L = []
+
+def comp(x,arrival_complete):
+    mean = 0.0
+    for i in range(int(x)+1):
+        mean += arrival_complete[i][1]-arrival_complete[i][0]
+    return mean/(x+1)
+LL = np.zeros(length)
+for j in sample:
+    x = [ i for i in range(length)]
+    p = [comp(i,sample[j][0][:length]) for i in x]
+    p = np.array(p)
+    print(p)
+    LL += p
+
+LL = LL/10
+
+# plot the graph withour transient removal
+xx = [x for x in range(len(LL))]
+# print(xx)
+plt.plot(xx,LL)
+plt.xlim(0, len(LL))# set axis limits
+plt.ylim(5.50, 7.0)
+
+
+# using the procedure by Law and Kelton
+def smooth(l,w):
+    l_new = [0]*(len(l)-w+1)
+#     print(len(l_new),len(l))
+    temp = 0.0
+    for i in range(w):
+        l_new[i] = sum(l[(i-(i)):(2*i+1)])/(2*i+1)
+#         print(l_new[i])
+    for i in range(w,len(l)-w):
+#         print(i)
+        l_new[i] = sum(l[(i-w):(i+w+1)])/(2*w+1)
+    l_new[len(l)-w] = sum(l[(i-w):])/(2*w+1)
+        
+    return l_new
+
+
+bb = smooth(LL,100) # after smoothing
+
+xx = [x for x in range(len(bb))]
+# print(xx)
+plt.plot(xx,bb)
+plt.xlim(0, len(LL))# set axis limits
+plt.ylim(5.50, 7.0)
+
+# ==================================================================================
+
+# calculate the mrt of each replications 
+
+length = min([len(sample[i][0]) for i in sample])
+
+def sumup(x,L):
+    mean = 0.0
+    for i in range(int(x)):
+        mean += L[i][1] - L[i][0]
+#         print(mean)
+    return mean/x
+
+for i in sample:
+#     print(len(sample[i][0][101:length+1]),'------------\n',sample[i][0][101:length+1])
+    print(sumup(len(sample[i][0][101:length+1]),sample[i][0][101:length+1]))
+    
+# ==================================================================================
+
+
+# calculate confident interval 
+
+import math
+sam =[-2.5378332183141814,
+ -2.496412909268914,
+ -2.5017944350957926,
+ -2.472923023478207,
+ -2.574517837683257,
+ -2.4996354999908417,
+ -2.4854962779319636,
+ -2.5076527042550043,
+ -2.3996711024455424,
+ -2.495492153555346]
+
+me = sum(sam)/len(sam)  # mean
+std = [(i-me)**2 for i in sam]
+stdd = sum(std)/len(std)
+stdd #std
+print(me - 2.262*stdd/math.sqrt(10),me + 2.262*stdd/math.sqrt(10))
+
+# ==================================================================================
+
+# plot the exponential distribution in each bins 
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+def my_dist(x):
+    return 1- np.exp(-1/10*x)
+
+def my_dist1(x):
+    return -np.log(1-random.random())/x
+
+# x = np.arange(0, 10, 0.01)
+# p = my_dist1(x)
+# plt.plot(x, p)
+# plt.show()
+
+import numpy as np
+import random
+from matplotlib import pyplot as plt
+
+x = []
+y = []
+for i in range(50000):
+    x.append(10)
+for i in x:
+    y.append(my_dist1(i))
+    
+# plt.plot(x, y,'o')
+# plt.xlim(0, 10)# set axis limits
+# plt.ylim(0, 100,1)
+
+# print(x,y)
+
+import numpy as NP
+A = NP.random.randint(0, 1, 100)
+
+# bins = NP.array([0., 1., 2., 3., 4., 5.])
+
+bins = NP.arange(0., 5.,0.01)
+
+# d is an index array holding the bin id for each point in A
+d = NP.digitize(y, bins) 
+from collections import Counter
+d = Counter(d)
+print(d)
+x = []
+z = []
+for i in d:
+    x.append(i/10)
+    z.append(d[i])
+print(x,z)
+plt.plot(x, z,'o')
+plt.xlim(0, 15,1)# set axis limits
+plt.ylim(0, 1000,1)
+
+# =================================================================================
+
