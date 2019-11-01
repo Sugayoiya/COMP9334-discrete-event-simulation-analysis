@@ -1,12 +1,34 @@
 ﻿# COMP9334 report
 
+file structure:
+
+- mode_\*.txt
+>>This file is to indicate whether the simulation should run in the random or trace mode. The file contains one string, which can either be random or trace.
+
+- para_\*.txt
+>>If the simulation mode is trace, then this file has three lines. The first line is the number of servers m. The second line is the setup time. The third line is the value of T c .
+
+- arrival_\*.txt
+>>The contents of the file arrival *.txt depend on the mode of the test. If mode is trace, then the file arrival *.txt contains the arrival times of the jobs with one arrival time occupying one line.
+
+- service_\*.txt
+>> * For trace mode, the file service *.txt contains one service time per line.
+
+>> * For random mode, the file service *.txt contains a string for a floating point number. This number corresponds to the value of µ.
+
+- num_tests.txt
+>>If the number of tests **num_tests** is 12, then we expect 24 files with names **mrt_1.txt, mrt_2.txt, ... mrt_12.txt (for mean response time) and departure_1.txt, departure_2.txt,... departure_12.txt (for departure times.)**
+
+
+
+
 usage：
 
 ```$python3
 
-\>> import wrapper
+>> import wrapper
 
-\>> wrapper.run_series()
+>> wrapper.run_series()
 ```
 
 
