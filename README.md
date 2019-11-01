@@ -1,5 +1,13 @@
 ﻿# COMP9334 report
 
+usage：
+
+```$python3
+
+\>> import wrapper
+
+\>> wrapper.run_series()
+```
 
 
 ##  Generate inter-arrival probability distribution and service time distribution
