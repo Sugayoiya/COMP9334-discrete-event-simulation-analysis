@@ -16,11 +16,12 @@ usage：
 
 ### Cumulative distribution function
 
-If 6 jobs arrive every hour, it means that, on average one job arrives every  10 minutes. Let's define a variable $\lambda$ =$\frac{1}{10}$ being the rate parameter. This rate parameter $\lambda$ is a measure of frequency: the average rate of events (in this case, jobs) per unit of time (in this case, minutes).
+If 6 jobs arrive every hour, it means that, on average one job arrives every  10 minutes. Let's define a variable <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda$&space;=$\frac{1}{10}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda$&space;=$\frac{1}{10}" title="\lambda$ =$\frac{1}{10}" /></a> being the rate parameter. This rate parameter <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda" title="\lambda" /></a> is a measure of frequency: the average rate of events (in this case, jobs) per unit of time (in this case, minutes).
 
 Knowing this, the question that what the probability of a next job arrive within a curtain time is answered by a well-known function called **cumulative distribution function** of **exponential distribution**, and it looks like this:
 
-​						<div align=center>$F(x) = 1 - e^{-\lambda x}$</div>
+​						<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=$F(x)&space;=&space;1&space;-&space;e^{-\lambda&space;x}$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$F(x)&space;=&space;1&space;-&space;e^{-\lambda&space;x}$" title="$F(x) = 1 - e^{-\lambda x}$" /></a></div>
+
 
 <div align=center><img src="https://lh3.googleusercontent.com/PIgF2hr0o2OQ3NNWqdscVrTNloKFJTz_BQUDWJ-BgAm87RXU4I8pCCAUGdg2O8g2KcanSm_wEBAB" alt="cumulative distribution function"></div>
 
@@ -32,17 +33,17 @@ As time passes, the probability of arrival increases towards one.
 
 A method to generate random number from a particular distribution is the *inverse transform method*:
 * generate random floating point value **n** between **0** and **1** ( *uniformly distribution*).
-* compute the $F^{-1}(n)$
+* compute the <a href="https://www.codecogs.com/eqnedit.php?latex=F^{-1}(n)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F^{-1}(n)" title="F^{-1}(n)" /></a>
 
 For **exponential distribution**, its **cumulative distribution function** *(CDF)* is 
 
-<div align=center>$F(x) = 1 - e^{-\lambda x}$</div>
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=$F(x)&space;=&space;1&space;-&space;e^{-\lambda&space;x}$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$F(x)&space;=&space;1&space;-&space;e^{-\lambda&space;x}$" title="$F(x) = 1 - e^{-\lambda x}$" /></a></div>
 
  so the inverse of this *CDF* is 
 
-<div align=center>$F^{-1}(x)=-log(1-x)/\lambda$</div>
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=$F^{-1}(x)=-log(1-x)/\lambda$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$F^{-1}(x)=-log(1-x)/\lambda$" title="$F^{-1}(x)=-log(1-x)/\lambda$" /></a></div>
 
-$x$ is uniformly distributed between $(0,1)$
+**x** is uniformly distributed between **(0,1)**
 
 
 
@@ -72,7 +73,7 @@ Here is some sample output:
 ```
 
 
-Let's run enough times to make sure that the average time arrival by this function really is $10$
+Let's run enough times to make sure that the average time arrival by this function really is **10**
 
 ```python 
 >>>sum([nextTime(1/10) for i in range(1000000)]) / 1000000
@@ -88,8 +89,8 @@ It very closes to what we want.
 
 Another thing we can do is:
 
-* Generate $50000$ uniformly distributed numbers in $(0,1)$, 
-* then compute $-log(1-x)/\lambda​$ ,$\lambda = 10​$, 
+* Generate $50000$ uniformly distributed numbers in **(0,1)**, 
+* then compute <a href="https://www.codecogs.com/eqnedit.php?latex=$-log(1-x)/\lambda​$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$-log(1-x)/\lambda​$" title="$-log(1-x)/\lambda​$" /></a> ,<a href="https://www.codecogs.com/eqnedit.php?latex=$\lambda&space;=&space;10​$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\lambda&space;=&space;10​$" title="$\lambda = 10​$" /></a>, 
 * the plot shows below:
 
 <div align=center><img src="https://lh3.googleusercontent.com/Q8JLR6Jqf59UjoyDXs3qUYL_Gv7FhXbjpM9TBNcFPyTXuQWicnjvB1bhiAyT8rDJ52rMjMWsjmUG" alt="plot"></div>
@@ -120,7 +121,7 @@ def generate_exp(T_end, arrival, service):
 Using the example given in the project
 * example 1:
 
-$m$ (*number of servers*) is $3$ , $T_c$ (*delayed off time*) is $100$ and the *setup time* is $50$. Here is the *arrival time* and *service time* table:
+**m** (*number of servers*) is **3** , <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a> (*delayed off time*) is **100** and the **setup time** is **50**. Here is the *arrival time* and *service time* table:
 
 Arrival time | Service time
 ----------- | -----------
@@ -134,7 +135,7 @@ mrt is : 41.250
 ```
 * example 2:
 
-$m$ (number of servers) is $3$ , $T_c$ (delayed off time) is $10$ and the *setup time* is $5$. Here is the *arrival time* and *service time* table:
+**m** (number of servers) is **3** , <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a> (delayed off time) is **10** and the **setup time** is **5**. Here is the *arrival time* and *service time* table:
 
 Arrival time | Service time
 ----------- | -----------
@@ -221,93 +222,93 @@ mrt is :3.922
 
 
 
-##  Determining a suitable value of $T_c$ 
+##  Determining a suitable value of <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a> 
 
-#### determining a suitable value of $T_{end}$( *length of simulation* ):
+#### determining a suitable value of <a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}$" title="$T_{end}$" /></a>( *length of simulation* ):
 
 choose the given value in the project document:
-the *number of servers* is $5$, *setup time* is $5$, $\lambda= 0.35$, $\mu = 1$, assume  $T_c = 0.1$. 
-$T_{end}$ starts from $100$ to $20100$ 
+the *number of servers* is **5**, *setup time* is **5**, <a href="https://www.codecogs.com/eqnedit.php?latex=$\lambda=&space;0.35$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\lambda=&space;0.35$" title="$\lambda= 0.35$" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=$\mu&space;=&space;1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\mu&space;=&space;1$" title="$\mu = 1$" /></a>, assume  <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;=&space;0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;=&space;0.1$" title="$T_c = 0.1$" /></a>. 
+<a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}$" title="$T_{end}$" /></a> starts from **100** to **20100** 
 
 | $T_{end}$ | 100   | 2100  | 4100  | 6100  | 8100  | 10100 | 12100 | 14100 | 16100 | 18100 | 20100 |
 | --------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | :---: |
 | $res$     | 5.480 | 6.072 | 6.026 | 5.931 | 6.064 | 6.110 | 6.049 | 6.072 | 6.036 | 6.112 | 6.129 |
 
-It shows that after $T_{end} = 8100$, the response time is around $6.06$ stably.
-So we choose $T_{end}=20000$ in case.
+It shows that after <a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}&space;=&space;8100$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}&space;=&space;8100$" title="$T_{end} = 8100$" /></a>, the response time is around **6.06** stably.
+So we choose <a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}=20000$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}=20000$" title="$T_{end}=20000$" /></a> in case.
 
 
 
-#### determining the  *number of replications* ( $n$ ):
+#### determining the  *number of replications* ( n ):
 
-$T_{end} = 20000$, considering the running time of the simulation, just starting from  $n=10$.
+<a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}=20000$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}=20000$" title="$T_{end}=20000$" /></a>, considering the running time of the simulation, just starting from  **n=10**.
 
 
 
-#### determining  the *end of transient* ( $l$ ):
+#### determining  the *end of transient* ( l ):
 
 without removing the transient, one of simulation graph is this:
 
 ​	<div align=center><img src="https://lh3.googleusercontent.com/lktMBfEj_FwosmyOgApEse3-cWY2UpWuQicoSjve-kKYAfs4nOymr0z2ZH-MB4_ZLpp9L64Vf6fn" alt="t_end - response time graph"></div>
 
-x-axis is the $T_{end}$ and y-axis is $mrt$ *( mean response time )*
+x-axis is the <a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}$" title="$T_{end}$" /></a> and y-axis is **mrt** *( mean response time )*
 
-Using a program that implements the transient removal procedure by **Law** and **Kelton**. A parameter $\omega$ can be varied to get a smoothed curve.
+Using a program that implements the transient removal procedure by **Law** and **Kelton**. A parameter <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega$" title="$\omega$" /></a> can be varied to get a smoothed curve.
 
-* when $\omega=1$, the curve shows:
+* when <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega=1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega=1$" title="$\omega=1$" /></a>, the curve shows:
 
   <div align=center><img src="https://lh3.googleusercontent.com/mQ48ZyFPmrk1iGZvKJTatDpttlLppo-gtDpCNoEJqjb5BQutblZCfhiaUUPdDsAbHBdvQngIcj2d" alt="\omega = 1"></div>
 
-There are some oscillation in the graph so $\omega$ still need to be bigger.
+There are some oscillation in the graph so <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega$" title="$\omega$" /></a> still need to be bigger.
 
-* when $\omega=5$, the curve shows: 
+* when <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega=5$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega=5$" title="$\omega=5$" /></a>, the curve shows: 
 
   
 
   <div align=center><img src="https://lh3.googleusercontent.com/3ph3gv5GpKoxrqcvRqYxa1cwiXI5RWM4H21LQJ8gvu7fiirK1Eig0n0xy6WLuzmGvSxGoWo7iaXa" alt="\omega = 5"></div>
 
-Still some oscillation in the graph so $\omega$ still need to be bigger.
+Still some oscillation in the graph so <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega$" title="$\omega$" /></a> still need to be bigger.
 
-* when $\omega=20$, the curve shows: 
+* when <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega=20$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega=20$" title="$\omega=20$" /></a>, the curve shows: 
 <div align=center><img src="https://lh3.googleusercontent.com/2i8FyGnPRC7q54t3t0Zew06b9Lonp68cV2lt-DYRQIWdUxXQiS6Obi9vmbUgMQ5T9fRn_poibMtT" alt="\omega = 20"></div>
 
 This is better but still not enough.
 
-* when $\omega=50$, the curve shows: 
+* when <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega=50$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega=50$" title="$\omega=50$" /></a>, the curve shows: 
 
   <div align=center><img src="https://lh3.googleusercontent.com/p5UEAXKOykNL8Cr1hkFWwH-3kzO_-kaN6XJWqrz6VAxGks4n2FtumiKhvLPJt3ijWVqh0W8R8mNX" alt="\omega = 50"></div>
 
 Much better but just some more test in case.
-* when $\omega=100$, the curve shows: 
+* when <a href="https://www.codecogs.com/eqnedit.php?latex=$\omega=100$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\omega=100$" title="$\omega=100$" /></a>, the curve shows: 
 <div align=center><img src="https://lh3.googleusercontent.com/yiA6N0eZPRd-_VWFvI8ZVw82ieRWHAi9k3tU0PMrvW02WzCB1afcWroYzi8AM6Cx0oH40dl1KroK" alt="\omega = 100"></div>
 
-It's good enough. So the $l$ ( *end of transient* ) $= 100$
+It's good enough. So the **l** ( *end of transient* ) **= 100**
 After transient removal, 
-* the *sample mean* of $(n = )$ $10$ replications $= 6.05788588625563$
-* the *sample standard deviation* of $10$ replications is $0.01587562344671423$
-* to compute the $95$% confidence interval, $a = 0.05$
-* Since having done $10$ independent experiments and wanting $95$%
-confidence interval,  using $t_{9,0.975}=2.262$
-* the $95$% *confidence interval* is:
-$[6.05788588625563 - 2.262\frac{0.01587562344671423}{\sqrt{10}},6.05788588625563 +2.262\frac{0.01587562344671423}{\sqrt{10}}]$
+* the *sample mean* of **(n = )** **10** replications **= 6.05788588625563**
+* the *sample standard deviation* of **10** replications is **0.01587562344671423**
+* to compute the **95%** confidence interval, **a = 0.05**
+* Since having done **10** independent experiments and wanting **95%**
+confidence interval,  using <a href="https://www.codecogs.com/eqnedit.php?latex=$t_{9,0.975}=2.262$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$t_{9,0.975}=2.262$" title="$t_{9,0.975}=2.262$" /></a>
+* the **95%** *confidence interval* is:
+<a href="https://www.codecogs.com/eqnedit.php?latex=[6.05788588625563&space;-&space;2.262\frac{0.01587562344671423}{\sqrt{10}},6.05788588625563&space;&plus;2.262\frac{0.01587562344671423}{\sqrt{10}}]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[6.05788588625563&space;-&space;2.262\frac{0.01587562344671423}{\sqrt{10}},6.05788588625563&space;&plus;2.262\frac{0.01587562344671423}{\sqrt{10}}]" title="[6.05788588625563 - 2.262\frac{0.01587562344671423}{\sqrt{10}},6.05788588625563 +2.262\frac{0.01587562344671423}{\sqrt{10}}]" /></a>
 
-$95$% *Confidence interval of mean response time*$=[6.046529938392863,6.069241834118398]$ is small enough.
+**95%** *Confidence interval of mean response time <a href="https://www.codecogs.com/eqnedit.php?latex==[6.046529938392863,6.069241834118398]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?=[6.046529938392863,6.069241834118398]" title="=[6.046529938392863,6.069241834118398]" /></a> is small enough.
 
 So the parameters chosen are: 
-*number of servers* is $5$, *setup time* is $5$, $\lambda= 0.35$, $\mu = 1$,$T_{end}=20000$, *number of replications* ( $n$ ) $=10$ .
+*number of servers* is **5**, *setup time* is **5**, <a href="https://www.codecogs.com/eqnedit.php?latex=$\lambda=&space;0.35$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\lambda=&space;0.35$" title="$\lambda= 0.35$" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=$\mu&space;=&space;1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$\mu&space;=&space;1$" title="$\mu = 1$" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=$T_{end}=20000$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_{end}=20000$" title="$T_{end}=20000$" /></a>, *number of replications* ( **n** ) **=10** .
 
 
 
 #### determining a suitable value of T c
 
-For the system with these parameters and  $T_c = 0.1$, we infer that the reason of high response time is the low $T_c$ causing the system need to be re-setup frequently. In order to get a improved system, which has lower $mrt$, the $T_c$ need to be higher.
+For the system with these parameters and <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;=&space;0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;=&space;0.1$" title="$T_c = 0.1$" /></a>, we infer that the reason of high response time is the low <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a> causing the system need to be re-setup frequently. In order to get a improved system, which has lower **mrt**, the <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a> need to be higher.
 
-When we use a $T_c = 1$ system, summarise the data in a table:
+When we use a <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;=&space;1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;=&space;1$" title="$T_c = 1$" /></a> system, summarise the data in a table:
 
  * EMRT = estimated mean response time 
 
 
- \ |EMRT System 1($T_c=0.1$) |EMRT System 2($T_c=1$) |EMRT System 2 - EMRT System 1
+ \ |EMRT System 1(<a href="https://www.codecogs.com/eqnedit.php?latex=$T_c=0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c=0.1$" title="$T_c=0.1$" /></a>) |EMRT System 2(<a href="https://www.codecogs.com/eqnedit.php?latex=$T_c=1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c=1$" title="$T_c=1$" /></a>) |EMRT System 2 - EMRT System 1
 -|-|-|-
 Rep. 1|6.103755337833227|5.667756688308885|-0.43599864952434153
 Rep. 2|6.036903920786047|5.7375017806318835|-0.29940214015416355
@@ -320,17 +321,17 @@ Rep. 8|6.0369751961009035|5.723134546912336|-0.3138406491885677
 Rep. 9|5.979168710456368|5.690162346478765|-0.28900636397760326
 Rep. 10|6.036846181790869|5.668442272176481|-0.36840390961438807
 
-Compute the $95$% confidence interval of for the last column ( difference between 2
+Compute the **95%** confidence interval of for the last column ( difference between 2
 systems ) is : 
 
-<div align=center>$[ -0.37119130260730415,-0.3659989122351688]$</div>
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=[&space;-0.37119130260730415,-0.3659989122351688]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[&space;-0.37119130260730415,-0.3659989122351688]" title="[ -0.37119130260730415,-0.3659989122351688]" /></a></div>
 
-So we can say System 2 is better than System 1 with probability $95$%.
-Our aim is to find a 2 units less than the system with $T_c = 0.1$, so still need to increase $T_c$.
+So we can say System 2 is better than System 1 with probability **95%**.
+Our aim is to find a 2 units less than the system with <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;=&space;0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;=&space;0.1$" title="$T_c = 0.1$" /></a>, so still need to increase <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a>.
 
-When $T_c = 10$:
+When <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;=&space;10$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;=&space;10$" title="$T_c = 10$" /></a>:
 
-\ |EMRT System 1($T_c=0.1$) |EMRT System 3($T_c=10$) |EMRT System 3 - EMRT System 1
+\ |EMRT System 1(<a href="https://www.codecogs.com/eqnedit.php?latex=$T_c=0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c=0.1$" title="$T_c=0.1$" /></a>) |EMRT System 3(<a href="https://www.codecogs.com/eqnedit.php?latex=$T_c=10$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c=10$" title="$T_c=10$" /></a>) |EMRT System 3 - EMRT System 1
 -|-|-|-
 Rep. 1|6.103755337833227|4.059404314942124|-2.044351022891103
 Rep. 2|6.036903920786047|4.040642601926197|-1.9962613188598501
@@ -343,16 +344,16 @@ Rep. 8|6.0369751961009035|4.08661866826957|-1.9503565278313335
 Rep. 9|5.979168710456368|4.0869327697588105|-1.8922359406975575
 Rep. 10|6.036846181790869|4.033203153386797|-2.0036430284040723
 
-Compute the $95$% confidence interval of for the last column ( difference between 2
+Compute the **95%** confidence interval of for the last column ( difference between 2
 systems ) is : 
 
-<div align=center>$[-2.003931854286826,-2.000411403279206]$</div>
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=[-2.003931854286826,-2.000411403279206]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[-2.003931854286826,-2.000411403279206]" title="[-2.003931854286826,-2.000411403279206]" /></a></div>
 
 So we can say System 3 is 2 units better than System 1 with probability $95$%.
 
-Still increase $T_c$ up to $20$ in case:
+Still increase <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c$" title="$T_c$" /></a> up to **20** in case:
 
-\ |EMRT System 1($T_c=0.1$) |EMRT System 4($T_c=10$) |EMRT System 3 - EMRT System 1
+\ |EMRT System 1(<a href="https://www.codecogs.com/eqnedit.php?latex=$T_c=0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c=0.1$" title="$T_c=0.1$" /></a>) |EMRT System 4(<a href="https://www.codecogs.com/eqnedit.php?latex=$T_c=10$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c=10$" title="$T_c=10$" /></a>) |EMRT System 3 - EMRT System 1
 -|-|-|-
 Rep. 1|6.103755337833227|3.5659221195190454|-2.5378332183141814
 Rep. 2|6.036903920786047|3.5404910115171333|-2.496412909268914
@@ -365,14 +366,14 @@ Rep. 8|6.0369751961009035|3.529322491845899|-2.5076527042550043
 Rep. 9|5.979168710456368|3.5794976080108256|-2.3996711024455424
 Rep. 10|6.036846181790869|3.5413540282355234|-2.495492153555346
 
-Compute the $95$% confidence interval of for the last column ( difference between 2
+Compute the **95%** confidence interval of for the last column ( difference between 2
 systems ) is : 
 
-<div align=center>$[-2.4984309802036546,-2.495854852200156]$</div>
+<div align=center><a href="https://www.codecogs.com/eqnedit.php?latex=[-2.4984309802036546,-2.495854852200156]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[-2.4984309802036546,-2.495854852200156]" title="[-2.4984309802036546,-2.495854852200156]" /></a></div>
 
-System 4 is almost 2.5 units better than System 1 with probability $95$%.
+System 4 is almost 2.5 units better than System 1 with probability **95%**.
 
-So we can say if our aim is to find a 2 units less than the system with $T_c = 0.1$, **when the system with $T_c > 10$, it is improved by $2$ units with probability $95$%**.
+So we can say if our aim is to find a 2 units less than the system with <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;=&space;0.1$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;=&space;0.1$" title="$T_c = 0.1$" /></a>, **when the system with <a href="https://www.codecogs.com/eqnedit.php?latex=$T_c&space;>&space;10$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$T_c&space;>&space;10$" title="$T_c > 10$" /></a>, it is improved by 2 units with probability 95%**.
 
 
 
